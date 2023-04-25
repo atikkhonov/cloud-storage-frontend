@@ -1,7 +1,7 @@
 import axios from "axios";
 import { parseCookies } from "nookies";
 
-axios.defaults.baseURL = "http://localhost:7777"
+axios.defaults.baseURL = "http://localhost:5555"
 
 axios.interceptors.request.use((config) => {
 
@@ -11,6 +11,7 @@ axios.interceptors.request.use((config) => {
     config.headers.Authorization = "Bearer" + _token;
   }
   
+  return config
 })
 
 export default axios;

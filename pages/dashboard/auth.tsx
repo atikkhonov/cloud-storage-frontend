@@ -20,7 +20,7 @@ const AuthPage: NextPage = () => {
             {
               label: 'Регистрация',
               key: '2',
-              children: <h1>Registration</h1>
+              children: <h3>Registration</h3>
             }
           ]}
         />
