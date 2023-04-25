@@ -1,6 +1,10 @@
 import { Form, Input, Button } from 'antd'
 
 export const LoginForm: React.FC = () => {
+  const onSubmit = (values: any) => {
+
+  }
+  
   return (
     <div>
       <Form
