@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header"
+import { Layout } from "@/layouts/Layout"
 import { checkAuth } from "@/utils/checkAuth"
 import { GetServerSidePropsContext, NextPage } from "next"
 
@@ -6,11 +6,14 @@ import { GetServerSidePropsContext, NextPage } from "next"
 const DashboardPage: NextPage = () => {
   return (
     <main>
-      <Header />
       <h1>Dashboard Private</h1>
     </main>
   )
-} 
+}
+
+DashboardPage.getLayout = (page: React.ReactNode) => {
+  return <Layout title="Dashboard / Главная">{page}</Layout>
+}
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const authProps = await checkAuth(ctx)

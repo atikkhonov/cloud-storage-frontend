@@ -2,6 +2,7 @@ import { RegisterFormDTO } from '@/api/dto/auth.dto'
 import { Form, Input, Button, notification } from 'antd'
 import * as Api from '../../api'
 import { setCookie } from 'nookies'
+import styles from './Auth.module.scss'
 
 export const RegistrationForm: React.FC = () => {
   const onSubmit = async (values: RegisterFormDTO) => {
@@ -36,7 +37,7 @@ export const RegistrationForm: React.FC = () => {
   }
   
   return (
-    <>
+    <div className={styles.formBlock}>
       <Form
         name="basic"
         labelCol={{
@@ -92,6 +93,6 @@ export const RegistrationForm: React.FC = () => {
           </Button>
         </Form.Item>
       </Form>
-    </>
+    </div>
   )
 }
