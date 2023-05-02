@@ -1,8 +1,18 @@
 export interface LoginFormDTO {
   email: string,
-  password: string;
-}
+  password: string,
+};
 
 export interface LoginResponseDTO {
-  token: string;
+  token: string,
+};
+
+export interface RegisterFormDTO extends LoginFormDTO { fullName: string };
+
+export interface RegisterResponseDTO extends LoginResponseDTO {};
+
+export interface User {
+  id: number,
+  email: string,
+  fullName: string,
 }

@@ -17,6 +17,8 @@ export const LoginForm: React.FC = () => {
       setCookie(null, "_token", token, {
         path: "/",
       });
+
+      location.href = "/dashboard"
     } catch (error) {
       console.warn('LoginForm', error)
 
@@ -30,7 +32,7 @@ export const LoginForm: React.FC = () => {
   }
   
   return (
-    <div>
+    <>
       <Form
         name="basic"
         labelCol={{
@@ -74,6 +76,6 @@ export const LoginForm: React.FC = () => {
           </Button>
         </Form.Item>
       </Form>
-    </div>
+    </>
   )
 }
