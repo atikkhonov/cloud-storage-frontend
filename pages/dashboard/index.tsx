@@ -2,6 +2,7 @@ import { Header } from "@/components/Header"
 import { checkAuth } from "@/utils/checkAuth"
 import { GetServerSidePropsContext, NextPage } from "next"
 
+
 const DashboardPage: NextPage = () => {
   return (
     <main>
