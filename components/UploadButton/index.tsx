@@ -1,37 +1,33 @@
-import { Button, Upload, UploadFile, notification } from "antd"
-import { CloudUploadOutlined } from "@ant-design/icons"
-import { useState } from "react"
-import * as Api from '../../api'
-import styles from './UploadButton.module.scss'
+import React from "react";
+import { Button, Upload, UploadFile, notification } from "antd";
+import { CloudUploadOutlined } from "@ant-design/icons";
 
-export const UploadButton = () => {
-  const [fileList, setFileList] = useState<UploadFile[]>([])
+import * as Api from "@/api";
+
+export const UploadButton: React.FC = () => {
+  const [fileList, setFileList] = React.useState<UploadFile[]>([]);
 
   const onUploadSuccess = async (options: any) => {
     try {
-      const file = await Api.files.uploadFile(options)
-
-      console.log(file);
-      
-    } catch (error) {
+      await Api.files.uploadFile(options);
+    } catch (err) {
       notification.error({
         message: "Ошибка!",
         description: "Не удалось загрузить файл",
         duration: 2,
-      })
+      });
     }
-  }
-  
+  };
+
   return (
     <Upload
       customRequest={onUploadSuccess}
       fileList={fileList}
       onChange={({ fileList }) => setFileList(fileList)}
-      className={styles.upload}
     >
-      <Button type="primary" icon={<CloudUploadOutlined/>} size="large">
+      <Button type="primary" icon={<CloudUploadOutlined />} size="large">
         Загрузить файл
       </Button>
     </Upload>
-  )
-}
+  );
+};
