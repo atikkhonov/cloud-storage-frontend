@@ -1,3 +1,5 @@
 export const isImage = (ext: string) => {
-  return ["jpg", "png", "jpeg", "gif"].includes(ext)
+  if (["jpg", "png", "jpeg", "gif"].includes(ext)) {
+    return false
+  } else return true
 } 
