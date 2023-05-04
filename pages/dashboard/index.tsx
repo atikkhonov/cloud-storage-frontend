@@ -6,8 +6,15 @@ import { Button, Menu } from "antd"
 import { useRouter } from "next/router"
 import { FileOutlined, FileImageOutlined, DeleteOutlined } from "@ant-design/icons"
 import { UploadButton } from "@/components/UploadButton"
+import * as Api from "@/api";
+import { FileList } from "@/components/FileList"
+import { FileItem } from "@/api/dto/files.dto"
 
-const DashboardPage: NextPage = () => {
+interface Props {
+  items: FileItem[]
+} 
+
+const DashboardPage: NextPage<Props> = ({ items }) => {
   const router = useRouter();
   const selectedMenu = router.pathname;
   
@@ -42,7 +49,7 @@ const DashboardPage: NextPage = () => {
         />
       </div>
       <div className="container">
-        <h1>files</h1>
+        <FileList items={items} />
       </div>
     </main>
   )
@@ -59,8 +66,19 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     return authProps;
   }
 
-  return {
-    props: {},
+  try {
+    const items = await Api.files.getAll();
+
+    return {
+      props: {
+        items,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      props: { items: [] },
+    };
   }
   
 }
