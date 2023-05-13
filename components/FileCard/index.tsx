@@ -12,7 +12,7 @@ interface FileCardProps {
 
 export const FileCard: React.FC<FileCardProps> = ({ filename, originalName }) => {
   const ext = getExtensionFileName(filename)
-  const imageUrl = ext && isImage(ext) ? "http://localhost:5555/uoloads/" + filename : "";
+  const imageUrl = ext && isImage(ext) ? "http://localhost:5555/uploads/" + filename : "";
   
   const color = getColorByExtension(ext)
   const classColor = styles[color]

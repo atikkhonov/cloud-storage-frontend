@@ -2,9 +2,9 @@ import { Layout } from "@/layouts/Layout"
 import { checkAuth } from "@/utils/checkAuth"
 import { GetServerSidePropsContext, NextPage } from "next"
 import * as Api from "@/api";
-import { FileList } from "@/components/FileList"
 import { FileItem } from "@/api/dto/files.dto"
 import { DashboardLayout } from "@/layouts/DashboardLayout"
+import { Files } from "@/modules/Files";
 
 interface Props {
   items: FileItem[]
@@ -13,7 +13,7 @@ interface Props {
 const DashboardPhotos: NextPage<Props> = ({ items }) => {
   return (
     <DashboardLayout>
-      <FileList items={items}/>
+       <Files items={items} withActions/>
     </DashboardLayout>
   )
 }
